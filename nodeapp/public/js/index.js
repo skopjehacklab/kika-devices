@@ -184,6 +184,7 @@ var updateStatus = function() {
         showLcd("#temp_hw", data.datastreams[0].current_value, "hw");
         showLcd("#temp_random", data.datastreams[3].current_value, "random");
         showLcd("#temp_lounge", data.datastreams[1].current_value, "lounge");
+        showLcd("#temp_out", data.datastreams[2].current_value, "out");
         var series = data.datastreams.map(function(ds) {
             return {
                 label: ds.id,
