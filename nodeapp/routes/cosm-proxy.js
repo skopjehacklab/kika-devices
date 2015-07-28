@@ -70,11 +70,17 @@ module.exports = function(app) {
             "api": "0.13",
             "space": "Hacklab Kika",
             "url": "http://b10g.spodeli.org/",
+            "logo": "https://wiki.spodeli.org/images/b/b0/Kika-logo-white.jpg",
             "location": {
                 "address": "8, Vasil Stefanovski, Kapishtec, Skopje, Macedonia",
                 "lon": 41.9962347,
                 "lat": 21.4183671,
             },
+            "contact": {
+                "twitter":"@2cmk"
+            },
+            "irc": "irc:\/\/irc.freenode.net\/#lugola",
+            "issue_report_channels": ["twitter"],
             "state": {
                 'open': hacklab_status.current_value === '1'
             }
