@@ -59,13 +59,17 @@ module.exports = function(app) {
     app.use('/cosm-feeds', function(req, res) {
         var path = req.url.split('?')[0].substr(1);
         res.contentType('application/json');
-        return res.end(cache[path] || {});
+        if (cache[path]) {
+            return res.end(cache[path]);
+        } else {
+            res.end(JSON.stringify({message: 'cosm cache is currently empty because of errors'}));
+        }
     });
  
     app.get('/space.json', function(req, res) {
         // http://spaceapi.net/documentation
         var path = '86779/datastreams/hacklab_status'
-        var hacklab_status = JSON.parse(cache[path])
+        var hacklab_status = cache[path] ? JSON.parse(cache[path]) : null;
         var space = {
             "api": "0.13",
             "space": "Hacklab Kika",
