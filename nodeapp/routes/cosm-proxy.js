@@ -69,7 +69,7 @@ module.exports = function(app) {
     app.get('/space.json', function(req, res) {
         // http://spaceapi.net/documentation
         var path = '86779/datastreams/hacklab_status'
-        var hacklab_status = cache[path] ? JSON.parse(cache[path]) : null;
+        var hacklab_status = cache[path] && JSON.parse(cache[path]).current_value == '1';
         var space = {
             "api": "0.13",
             "space": "Hacklab Kika",
@@ -86,7 +86,7 @@ module.exports = function(app) {
             "irc": "irc:\/\/irc.freenode.net\/#lugola",
             "issue_report_channels": ["twitter"],
             "state": {
-                'open': hacklab_status.current_value === '1'
+                'open': hacklab_status
             }
         }
         res.contentType('application/json');
